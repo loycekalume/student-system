@@ -20,11 +20,15 @@ from django.urls import path
 from main import views
 
 urlpatterns = [
-    path('',views.students, name='students'),
-    path('add/student',views.add_student, name='add_student'),
-    path('students/delete/<int:student_id>',views.delete_student, name='delete_student'),
+    path('', views.students, name='students'),
+    path('add/student', views.add_student, name='add_student'),
+    path('students/update/<int:student_id>', views.update_student, name='update_student'),
+    path('students/delete/<int:student_id>', views.delete_student, name='delete_student'),
     # path('test',views.test, name='test'),
-    path('courses',views.courses, name='courses'),
-    path('enrollment',views.enrollment, name='enrollment'),
+path('courses/', views.course_list, name='course_list'),
+    path('courses/add/', views.add_course, name='add_course'),
+    path('courses/<int:course_id>/edit/', views.edit_course, name='edit_course'),
+    path('courses/<int:course_id>/delete/', views.delete_course, name='delete_course'),
+    path('enrollments', views.enrollments, name='enrollments'),
     path('admin/', admin.site.urls),
 ]

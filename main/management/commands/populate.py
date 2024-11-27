@@ -1,6 +1,6 @@
 from django.core.management import BaseCommand
 
-from main.models import Student
+from main.models import Student, Course
 
 
 class Command(BaseCommand):
@@ -112,3 +112,19 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS('Successfully populated students'))
 
         print("Populated successfully")
+
+        courses = [
+            {"name": "Math 101", "code": "MTH101", "instructor": "Dr. Smith", "start_date": "2024-01-10",
+             "end_date": "2024-05-15", "is_active": True},
+            {"name": "Physics 201", "code": "PHY201", "instructor": "Dr. Einstein", "start_date": "2024-02-01",
+             "end_date": "2024-06-20", "is_active": True},
+            {"name": "Chemistry 301", "code": "CHE301", "instructor": "Dr. Curie", "start_date": "2024-03-01",
+             "end_date": "2024-07-30", "is_active": True},
+
+        ]
+
+        for c in courses:
+            course = Course(**c)
+            course.save()
+        self.stdout.write(self.style.SUCCESS('Successfully populated courses'))
+        print("Populated courses successfully")

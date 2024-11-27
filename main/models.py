@@ -12,7 +12,8 @@ class Course(models.Model):
     instructor = models.CharField(max_length=30)
     start_date = models.DateField()
     end_date = models.DateField()
-    created_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(default=datetime.now)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
@@ -49,4 +50,4 @@ class Enrollment(models.Model):
         db_table = 'enrollment'
 
     def __str__(self):
-        return f"{self.student.first_name} - {self.course.name}"
+        return f"{self.student.first_name} "
