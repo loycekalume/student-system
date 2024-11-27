@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from main.models import Student, Enrollment
 
@@ -33,3 +33,9 @@ def courses(request):
 
 def enrollment(request):
     return render(request, 'enrollment.html')
+
+
+def delete_student(request,student_id):
+    student = Student.objects.get(id=student_id)
+    student.delete()
+    return redirect("students")

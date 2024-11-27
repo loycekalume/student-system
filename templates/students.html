@@ -13,6 +13,7 @@
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Joining Date</th>
+                <th>Delete</th>
             </tr>
             
             {% for student in students %}
@@ -22,6 +23,10 @@
                     <td>{{ student.last_name }}</td>
                     <td>{{ student.email }}</td>
                     <td>{{ student.created_at}}</td>
+                    <td>
+                        <a class="btn btn-danger" href="{% url 'delete_student' student.id %}">Remove</a>
+                    </td>
+                     
                 
                 </tr>
             	
