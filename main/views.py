@@ -1,13 +1,23 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
+from main.app_form import StudentForm
 from main.models import Student, Enrollment
 
 
 # Create your views here.
 def students(request):
-    students = Student.objects.all()  # select * from students
+    students = Student.objects.all().order_by('-id').values()  # select * from students
     return render(request, 'students.html', {"students": students})
+
+def add_student(request):
+    if request.method == 'POST':
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('students')
+    form = StudentForm()
+    return render(request,'student_form.html',{'form':form})
 
 
 # def test(request):
@@ -39,3 +49,5 @@ def delete_student(request,student_id):
     student = Student.objects.get(id=student_id)
     student.delete()
     return redirect("students")
+
+
