@@ -28,7 +28,7 @@ class Student(models.Model):
     email = models.EmailField()
     dob = models.DateField()
     gender = models.CharField(max_length=10)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(default=datetime.now)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:

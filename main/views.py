@@ -6,7 +6,7 @@ from main.models import Student, Enrollment
 
 # Create your views here.
 def students(request):
-    data = Student.objects.all()  # select * from students
+    students = Student.objects.all()  # select * from students
     return render(request, 'students.html', {"students": students})
 
 
