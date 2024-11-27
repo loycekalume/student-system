@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Students</title>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h2>Students</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Joining Date</th>
+            </tr>
+            
+            {% for student in students %}
+                <tr>
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.first_name }}</td>
+                    <td>{{ student.last_name }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.created_at}}</td>
+                
+                </tr>
+            	
+            {% empty %}
+            	<p>No students in the db</p>
+            {% endfor %}
+            
+ 
+        </table>
+    </div>
+{% endblock %}
